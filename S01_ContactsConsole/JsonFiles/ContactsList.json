@@ -1,0 +1,39 @@
+{
+  "ContactListID": 1,
+  "ContactsList": [
+    {
+      "ContactID": 1,
+      "ContactName": "One",
+      "Addresses": [
+        {
+          "AddressID": 1,
+          "Street": "Street Alpha"
+        },
+        {
+          "AddressID": 2,
+          "Street": "Street Beta"
+        }
+      ]
+    },
+    {
+      "ContactID": 2,
+      "ContactName": "Two",
+      "Addresses": [
+        {
+          "AddressID": 3,
+          "Street": "Street Gamma"
+        }
+      ]
+    },
+    {
+      "ContactID": 3,
+      "ContactName": "Three",
+      "Addresses": [
+        {
+          "AddressID": 4,
+          "Street": "Street Delta"
+        }
+      ]
+    }
+  ]
+}

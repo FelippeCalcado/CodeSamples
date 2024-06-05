@@ -1,4 +1,5 @@
-﻿using System;
+﻿using S01_ContactsConsole.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
@@ -9,9 +10,10 @@ namespace S01_ContactsConsole.Interfaces
 {
     internal interface IContact
     {
-        int ContactID { get; set; }
-        string ContactName { get; set; }
-        
+        int ContactID { get; }
+        string ContactName { get; }
+        ICollection<Address> Addresses { get; }
+
 
     }
 }

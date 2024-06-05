@@ -38,7 +38,7 @@ namespace U01_Utility
         public static void WriteSubtitle(string subtitle)
         {
 
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.ForegroundColor = ConsoleColor.Gray;
 
             Console.WriteLine(subtitle);
 
@@ -65,6 +65,13 @@ namespace U01_Utility
         {
 
             Console.Write(separator);
+
+        }
+
+        public static void PauseConsole()
+        {
+
+            Console.ReadKey();
 
         }
 
