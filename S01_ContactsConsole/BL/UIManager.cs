@@ -13,7 +13,7 @@ namespace S01_ContactsConsole.BL
     {
         public static void GetUserChoice(string answer)
         {
-            string Settings = "C:\\DEV2024\\RumosSamples\\CodeSamples\\S01_ContactsConsole\\JsonFiles\\Settings.json";
+            string Settings = "..\\..\\JsonFiles\\Settings.json";
             Dictionary<string, string> dicSample = new Dictionary<string, string>();
             ContactList sample = new ContactList();
 
