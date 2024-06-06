@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BL\UIManager.cs" />
+    <Compile Include="Data\InitialData.cs" />
     <Compile Include="Interfaces\IAddress.cs" />
     <Compile Include="Interfaces\IContact.cs" />
     <Compile Include="Models\Address.cs" />

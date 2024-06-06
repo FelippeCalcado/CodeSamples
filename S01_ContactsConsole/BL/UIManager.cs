@@ -17,8 +17,8 @@ namespace S01_ContactsConsole.BL
             Dictionary<string, string> dicSample = new Dictionary<string, string>();
             ContactList sample = new ContactList();
 
-            Dictionary<string, string> dataFile = U01_Utility.JsonUtils.ReadJson(Settings, dicSample);
-            ContactList CL = U01_Utility.JsonUtils.ReadJson(dataFile["DataFilePath"] ,sample);
+            Dictionary<string, string> dataFile = U01_Utility.JsonUtils.ReadJson< Dictionary<string, string>>(Settings);
+            ContactList CL = U01_Utility.JsonUtils.ReadJson<ContactList>(dataFile["DataFilePath"]);
 
             switch(answer)
             {

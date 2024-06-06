@@ -1,5 +1,5 @@
 {
-  "ContactListID": 1,
+  "ContactListID": 0,
   "ContactsList": [
     {
       "ContactID": 1,
@@ -7,11 +7,11 @@
       "Addresses": [
         {
           "AddressID": 1,
-          "Street": "Street Alpha"
+          "Street": "Alpha"
         },
         {
           "AddressID": 2,
-          "Street": "Street Beta"
+          "Street": "Beta"
         }
       ]
     },
@@ -20,8 +20,8 @@
       "ContactName": "Two",
       "Addresses": [
         {
-          "AddressID": 3,
-          "Street": "Street Gamma"
+          "AddressID": 2,
+          "Street": "Beta"
         }
       ]
     },
@@ -30,8 +30,8 @@
       "ContactName": "Three",
       "Addresses": [
         {
-          "AddressID": 4,
-          "Street": "Street Delta"
+          "AddressID": 3,
+          "Street": "Gamma"
         }
       ]
     }
