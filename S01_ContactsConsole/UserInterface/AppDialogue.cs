@@ -13,7 +13,7 @@ namespace S01_ContactsConsole.UserInterface
     {
         public static void Opening()
         {
-            U01_Utility.ConsoleTexts.WriteTitle("Contacts");
+            ConsoleTexts.WriteTitle("Contacts");
             ConsoleTexts.WriteSubtitle("hello! Welcome to your list of contacts.");
         }
         public static void OpeningOptions()
@@ -22,8 +22,11 @@ namespace S01_ContactsConsole.UserInterface
             Opening();
             ConsoleTexts.WriteSubtitle("Choose an option below.");
             ConsoleTexts.BlockSeparator();
-            ConsoleTexts.WriteMessage("1    Display all Contacts.");
-            ConsoleTexts.WriteMessage("2    Find a contact by name.");
+            ConsoleTexts.WriteMessage("1    Create a contact.");
+            ConsoleTexts.WriteMessage("2    Display all Contacts.");
+            ConsoleTexts.WriteMessage("3    Find a contact by name.");
+            ConsoleTexts.WriteMessage("4    Edit a contact.");
+            ConsoleTexts.WriteMessage("5    Delete a contact.");
 
             string answer = Console.ReadLine();
             UIManager.GetUserChoice(answer);

@@ -86,7 +86,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\U01_Utility\U01_Utility.csproj">
       <Project>{0e56ce07-19bb-4b2b-b37c-cca43001385b}</Project>

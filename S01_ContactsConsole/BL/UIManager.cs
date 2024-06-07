@@ -6,6 +6,7 @@ using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using U01_Utility;
 
 namespace S01_ContactsConsole.BL
 {
@@ -15,41 +16,70 @@ namespace S01_ContactsConsole.BL
         {
             string Settings = "..\\..\\JsonFiles\\Settings.json";
             Dictionary<string, string> dicSample = new Dictionary<string, string>();
-            ContactList sample = new ContactList();
 
             Dictionary<string, string> dataFile = U01_Utility.JsonUtils.ReadJson< Dictionary<string, string>>(Settings);
-            ContactList CL = U01_Utility.JsonUtils.ReadJson<ContactList>(dataFile["DataFilePath"]);
+            string DataFilePath = dataFile["DataFilePath"];
+            List<Contact> CL = JsonUtils.ReadJson<List<Contact>>(DataFilePath);
 
             switch(answer)
             {
                 case "1":
+                    CL = JsonUtils.ReadJson<List<Contact>>(DataFilePath);
                     Console.Clear();
-                    U01_Utility.ConsoleTexts.WriteTitle("Contacts");
+                    ConsoleTexts.WriteTitle("Contacts");
+                    ConsoleTexts.WriteSubtitle("Create Contact");
 
-                    foreach(Contact contact in CL.ContactsList)
+                    ConsoleTexts.WriteSubtitle("Write Contact´s name.");
+                    string name = Console.ReadLine();
+                    List<int> ids = new List<int>();
+                    foreach(Contact contact in CL)
+                    {
+                        ids.Add(contact.ContactID);
+                    }
+                    int id = ids.Max();
+                    Contact newContact = new Contact()
+                    {
+                        ContactID = id + 1,
+                        ContactName = name,
+                    };
+                    JsonUtils.CreateItemInJson<Contact>(DataFilePath, newContact);
+
+
+                    ConsoleTexts.PauseConsole();
+                    AppDialogue.OpeningOptions();
+
+                    break;
+
+                case "2":
+                    CL = JsonUtils.ReadJson<List<Contact>>(DataFilePath);
+                    Console.Clear();
+                    ConsoleTexts.WriteTitle("Contacts");
+
+                    foreach(Contact contact in CL)
                     {
                         Console.WriteLine(contact.ContactName);
                         foreach(Address address in contact.Addresses)
                         {
                             Console.WriteLine(" " + address.Street);
                         }
-                        U01_Utility.ConsoleTexts.BlockSeparator();
+                        ConsoleTexts.BlockSeparator();
                     }
-                    U01_Utility.ConsoleTexts.PauseConsole();
+                    ConsoleTexts.PauseConsole();
                     AppDialogue.OpeningOptions();
 
                     break;
 
-                case "2":
+                case "3":
+                    CL = JsonUtils.ReadJson<List<Contact>>(DataFilePath);
                     Console.Clear();
-                    U01_Utility.ConsoleTexts.WriteTitle("Contacts");
-                    U01_Utility.ConsoleTexts.WriteSubtitle("Write Contact´s name.");
+                    ConsoleTexts.WriteTitle("Contacts");
+                    ConsoleTexts.WriteSubtitle("Write Contact´s name.");
 
-                    string name = Console.ReadLine();
+                    name = Console.ReadLine();
                     Console.Clear();
-                    U01_Utility.ConsoleTexts.WriteTitle("Contacts");
+                    ConsoleTexts.WriteTitle("Contacts");
                     List<Contact> contacts = new List<Contact>();
-                    foreach(Contact contact in CL.ContactsList)
+                    foreach(Contact contact in CL)
                     {
                         if(contact.ContactName == name)
                         {
@@ -61,26 +91,70 @@ namespace S01_ContactsConsole.BL
                     {
                         foreach (Contact contact in contacts)
                         {
-                            Console.WriteLine(contact.ContactName);
+                            Console.WriteLine("ID: " + contact.ContactID);
+                            Console.WriteLine("Name: " + contact.ContactName);
+                            int ad = 1;
                             foreach (Address address in contact.Addresses)
                             {
-                                Console.WriteLine(" " + address.Street);
+                                Console.WriteLine($"Address #{ad}: " + address.Street);
+                                ad++;
                             }
-                            U01_Utility.ConsoleTexts.BlockSeparator();
+                            ConsoleTexts.BlockSeparator();
                         }
                     }
                     else
                     {
                         Console.Clear();
-                        U01_Utility.ConsoleTexts.WriteTitle("Contacts");
-                        U01_Utility.ConsoleTexts.WriteSubtitle("Name not found.");
-                        U01_Utility.ConsoleTexts.TerminateConsole();
+                        ConsoleTexts.WriteTitle("Contacts");
+                        ConsoleTexts.WriteSubtitle("Name not found.");
+                        ConsoleTexts.TerminateConsole();
 
                     }
-                    U01_Utility.ConsoleTexts.PauseConsole();
+                    ConsoleTexts.PauseConsole();
                     AppDialogue.OpeningOptions();
+                    break;
 
+                case "4":
+                    CL = JsonUtils.ReadJson<List<Contact>>(DataFilePath);
+                    Console.Clear();
+                    ConsoleTexts.WriteTitle("Edit Contact");
+                    ConsoleTexts.WriteSubtitle("Write Contact´s name.");
+                    name = Console.ReadLine();
+                    ConsoleTexts.WriteSubtitle("Write Contact´s property name.");
+                    string prop = Console.ReadLine();
+                    ConsoleTexts.WriteSubtitle("Write Contact´s new property value.");
+                    string newValue = Console.ReadLine();
+                    Console.Clear();
+                    JsonUtils.EditItemInJson<Contact>(DataFilePath, prop, name, newValue);
 
+                    ConsoleTexts.PauseConsole();
+                    AppDialogue.OpeningOptions();
+                    break;
+
+                case "5":
+                    CL = JsonUtils.ReadJson<List<Contact>>(DataFilePath);
+                    Console.Clear();
+                    ConsoleTexts.WriteTitle("Edit Contact");
+                    ConsoleTexts.WriteSubtitle("Write Contact´s name.");
+                    name = Console.ReadLine();
+
+                    foreach (Contact contact in CL)
+                    {
+                        if (contact.ContactName == name)
+                        {
+                            Console.Clear();
+                            ConsoleTexts.WriteTitle("Contacts");
+                            Console.Clear();
+                            JsonUtils.DeleteItemInJson<Contact>(DataFilePath, contact, "ContactName", name);
+                            AppDialogue.OpeningOptions();
+                        }
+                        else
+                        {
+                            ConsoleTexts.WriteMessage("Contact not found. Press any key to continue.");
+                            ConsoleTexts.PauseConsole();
+                            AppDialogue.OpeningOptions();
+                        }
+                    }
 
                     break;
             }

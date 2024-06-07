@@ -15,43 +15,52 @@ namespace S01_ContactsConsole
 {
     internal class Program
     {
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
 
             string Settings = "..\\..\\JsonFiles\\Settings.json";
 
-            Dictionary<string, string> dataFile = JsonUtils.ReadJson< Dictionary<string, string>>(Settings);
+            Dictionary<string, string> dataFile = JsonUtils.ReadJson<Dictionary<string, string>>(Settings);
             InitialData initialData = new InitialData();
-            initialData.FeedData(dataFile["DataFilePath"]);
-            ContactList CL = JsonUtils.ReadJson<ContactList>(dataFile["DataFilePath"]);
+            string file = dataFile["DataFilePath"];
 
-
+            initialData.FeedData(file);
 
             ConsoleTexts.SetUnicodeConsole();
             ConsoleTexts.WriteTitle("Contacts");
 
-
-            /*
-            Dictionary<string, string> dicSample = new Dictionary<string, string>();
-            ContactList sample = new ContactList();
-
-
-            string newName = "Ten";
-
-            foreach (Contact contact in CL.ContactsList)
-            {
-                if (contact.ContactName == "One")
-                {
-                    Contact cont = JsonUtils.EditJson(dataFile["DataFilePath"], contact, "ContactName", newName);
-                    CL.ContactsList.Add(cont); ;
-                    CL.ContactsList.Remove(contact);
-                }
-                Console.WriteLine(contact.ContactName);
-                ConsoleTexts.PauseConsole();
-            }
-            */
+            //  string filePath, string property, string oldValue, string newValue
+            // JsonUtils.EditItemInJson<Contact>(file, "ContactName", "One", "Ten");
 
             AppDialogue.OpeningOptions();
+
+
+            /*
+            Contact C4 = new Contact()
+            {
+                ContactID = 4,
+                ContactName = "Fourth"
+            };
+
+            //JsonUtils.CreateItemInJson(file, C4);
+            List<Contact> CL = JsonUtils.ReadJson<List<Contact>>(file);
+            foreach (Contact c in CL)
+            {
+                ConsoleTexts.WriteMessage(c.ContactName);
+            }
+            JsonUtils.DeleteItemInJson(file, C4, "ContactID", "4");
+
+            ConsoleTexts.PauseConsole();
+            List<Contact> CL2 = JsonUtils.ReadJson<List<Contact>>(file);
+            foreach (Contact c in CL2)
+            {
+                ConsoleTexts.WriteMessage(c.ContactName);
+            }
+
+            ConsoleTexts.WriteMessage(CL2.Count.ToString());
+            */
+
+
         }
     }
 }

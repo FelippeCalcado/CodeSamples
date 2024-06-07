@@ -1,39 +1,41 @@
-{
-  "ContactListID": 0,
-  "ContactsList": [
-    {
-      "ContactID": 1,
-      "ContactName": "One",
-      "Addresses": [
-        {
-          "AddressID": 1,
-          "Street": "Alpha"
-        },
-        {
-          "AddressID": 2,
-          "Street": "Beta"
-        }
-      ]
-    },
-    {
-      "ContactID": 2,
-      "ContactName": "Two",
-      "Addresses": [
-        {
-          "AddressID": 2,
-          "Street": "Beta"
-        }
-      ]
-    },
-    {
-      "ContactID": 3,
-      "ContactName": "Three",
-      "Addresses": [
-        {
-          "AddressID": 3,
-          "Street": "Gamma"
-        }
-      ]
-    }
-  ]
-}
+[
+  {
+    "ContactID": 1,
+    "ContactName": "One",
+    "Addresses": [
+      {
+        "AddressID": 1,
+        "Street": "Alpha"
+      },
+      {
+        "AddressID": 2,
+        "Street": "Beta"
+      }
+    ]
+  },
+  {
+    "ContactID": 2,
+    "ContactName": "Two",
+    "Addresses": [
+      {
+        "AddressID": 2,
+        "Street": "Beta"
+      }
+    ]
+  },
+  {
+    "ContactID": 3,
+    "ContactName": "Three",
+    "Addresses": [
+      {
+        "AddressID": 3,
+        "Street": "Gamma"
+      }
+    ]
+  },
+  {
+    "ContactID": 4,
+    "ContactName": "Four",
+    "Addresses": []
+  }
+]
