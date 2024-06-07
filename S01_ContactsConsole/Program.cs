@@ -28,39 +28,7 @@ namespace S01_ContactsConsole
 
             ConsoleTexts.SetUnicodeConsole();
             ConsoleTexts.WriteTitle("Contacts");
-
-            //  string filePath, string property, string oldValue, string newValue
-            // JsonUtils.EditItemInJson<Contact>(file, "ContactName", "One", "Ten");
-
             AppDialogue.OpeningOptions();
-
-
-            /*
-            Contact C4 = new Contact()
-            {
-                ContactID = 4,
-                ContactName = "Fourth"
-            };
-
-            //JsonUtils.CreateItemInJson(file, C4);
-            List<Contact> CL = JsonUtils.ReadJson<List<Contact>>(file);
-            foreach (Contact c in CL)
-            {
-                ConsoleTexts.WriteMessage(c.ContactName);
-            }
-            JsonUtils.DeleteItemInJson(file, C4, "ContactID", "4");
-
-            ConsoleTexts.PauseConsole();
-            List<Contact> CL2 = JsonUtils.ReadJson<List<Contact>>(file);
-            foreach (Contact c in CL2)
-            {
-                ConsoleTexts.WriteMessage(c.ContactName);
-            }
-
-            ConsoleTexts.WriteMessage(CL2.Count.ToString());
-            */
-
-
         }
     }
 }
