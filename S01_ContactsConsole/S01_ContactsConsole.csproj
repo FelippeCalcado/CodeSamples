@@ -71,16 +71,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BL\UIManager.cs" />
+    <Compile Include="Controller\UIManager.cs" />
     <Compile Include="Data\InitialData.cs" />
     <Compile Include="Interfaces\IAddress.cs" />
     <Compile Include="Interfaces\IContact.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Contact.cs" />
-    <Compile Include="Models\ContactList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserInterface\AppDialogue.cs" />
+    <Compile Include="Views\Contact\Create.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

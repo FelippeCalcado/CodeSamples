@@ -8,6 +8,10 @@ namespace U01_Utility
 {
     public class ConsoleTexts
     {
+        public static int LineLength()
+        {
+            return 100;
+        }
         public static void SetUnicodeConsole()
         {
 
@@ -20,14 +24,19 @@ namespace U01_Utility
         }
         public static void WriteTitle(string title)
         {
+            int titleLength = title.Length;
+            int semiMidSpace = (LineLength() - titleLength)/2;
 
             Console.ForegroundColor = ConsoleColor.Cyan;
 
-            Console.WriteLine(new string('-', 50));
+            Console.WriteLine(new string('-', LineLength()));
 
-            Console.WriteLine(title.ToUpper());
+            Console.Write(new string(' ', semiMidSpace));
+            Console.Write(title.ToUpper());
+            Console.Write(new string(' ', semiMidSpace));
+            Console.Write("\n");
 
-            Console.WriteLine(new string('-', 50));
+            Console.WriteLine(new string('-', LineLength()));
 
             Console.ForegroundColor = ConsoleColor.White;
 
@@ -45,6 +54,29 @@ namespace U01_Utility
             Console.ForegroundColor = ConsoleColor.White;
 
             Console.WriteLine();
+
+        }
+
+        public static void WriteOption(int number, string option)
+        {
+            string esp = " ";
+            string separator = ". ";
+            int lineLenght = LineLength();
+            int wordsLenght = esp.Length + number.ToString().Length + option.Length + separator.Length;
+            int emptySpace = lineLenght - wordsLenght;
+            string complement = new string(' ', emptySpace);
+            string emptyLine = new string(' ', lineLenght);
+
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.Write(emptyLine + "\n");
+            Console.Write(esp + number + ". ");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.Write(option);
+            Console.Write(complement + "\n");
+            Console.Write(emptyLine + "\n");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.Black;
 
         }
 

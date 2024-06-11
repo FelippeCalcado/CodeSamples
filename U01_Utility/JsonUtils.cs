@@ -79,7 +79,7 @@ namespace U01_Utility
                 objList = JsonSerializer.Deserialize<List<T>>(file).ToList();
 
                 /* Seeding list dict */
-                foreach(T o in objList)
+                foreach (T o in objList)
                 {
                     string[] props = new string[typeof(T).GetProperties().Count()];
                     string key = typeof(T).GetProperties()[0].GetValue(o).ToString();
@@ -107,7 +107,7 @@ namespace U01_Utility
                 foreach (KeyValuePair<string, string[]> kvp in propertiesL)
                 {
                     int sameCount = 0;
-                    for(int i = 0; i < kvp.Value.Count()-1 ;i++)
+                    for (int i = 0; i < kvp.Value.Count() - 1; i++)
                     {
                         if (kvp.Value[i] == propertiesR[objKey][i])
                         {
@@ -116,15 +116,38 @@ namespace U01_Utility
                     }
 
                     /* Removing object */
-                    if (sameCount == kvp.Value.Count()-1)
+                    if (sameCount == kvp.Value.Count() - 1)
                     {
                         objList.Remove(objectsL[kvp.Key]);
-                    }    
+                    }
                 }
             }
 
             /* Saving */
             _ = CreateJson(objList, filePath);
+        }
+
+        public static T ReturnItem<T>(string filePath, string property, string value, T mock)
+        {
+            List<T> list = ReadJson<List<T>>(filePath);
+            foreach (T obj in list)
+            {
+                foreach (PropertyInfo prop in typeof(T).GetProperties())
+                {
+
+                    if (prop.Name == property & prop.GetValue(obj).ToString() == value)
+                    {
+                        Console.WriteLine(prop.Name + ", " + prop.GetValue(obj));
+                        return obj;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Item not found");
+
+                    }
+                }
+            }
+            return mock;
         }
     }
 }

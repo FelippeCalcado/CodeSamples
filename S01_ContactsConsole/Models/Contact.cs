@@ -13,6 +13,7 @@ namespace S01_ContactsConsole.Models
     {
         public int ContactID { get; set; }
         public string ContactName { get; set; }
+        public string PhoneNumber { get; set; }
         public virtual ICollection<Address> Addresses { get; set; } = new HashSet<Address>();
     }
 }

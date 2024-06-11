@@ -1,4 +1,5 @@
-﻿using S01_ContactsConsole.Data;
+﻿using S01_ContactsConsole.BL;
+using S01_ContactsConsole.Data;
 using S01_ContactsConsole.Models;
 using S01_ContactsConsole.UserInterface;
 using System;
@@ -17,18 +18,11 @@ namespace S01_ContactsConsole
     {
         static void Main(string[] args)
         {
-
-            string Settings = "..\\..\\JsonFiles\\Settings.json";
-
-            Dictionary<string, string> dataFile = JsonUtils.ReadJson<Dictionary<string, string>>(Settings);
             InitialData initialData = new InitialData();
-            string file = dataFile["DataFilePath"];
-
-            initialData.FeedData(file);
-
+            initialData.FeedData(UIManager.GetDataPath());
             ConsoleTexts.SetUnicodeConsole();
-            ConsoleTexts.WriteTitle("Contacts");
-            AppDialogue.OpeningOptions();
+            AppDialogue.MainMenu();
+            
         }
     }
 }
